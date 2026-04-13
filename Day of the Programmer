@@ -1,0 +1,48 @@
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int year = Integer.parseInt(bufferedReader.readLine().trim());
+
+        String result = dayOfProgrammer(year);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+     public static String dayOfProgrammer(int year) {
+        //  int totalDays=0;
+        // if(isLeapYear(year))totalDays++;
+        // int month[]={31,28,31,30,31,30,31,31,30,31,30,31};
+        // int months=0;
+        // for(int i=0;i<month.length;i++){
+        //     if(totalDays>256)break;
+        //     totalDays+=month[i];
+        //     months++;
+        // }
+        // int days=256-totalDays;
+        // if(days>0)months++;
+        // return days+"."+months+"."+year;
+        
+    if(year==1918) return "26.09.1918";
+    if(year<1918) {// Julian calendar
+        if(year%4==0) {
+            return "12.09."+year;
+        } else {
+            return "13.09."+year;
+        }
+    }
+    else { // Gregorian calendar
+        if((year%400==0)||(year%4==0&&year%100!=0)) {
+            return "12.09."+year;
+        } else {
+            return "13.09."+year;
+        }
+    }
+
+    }
+
+}
